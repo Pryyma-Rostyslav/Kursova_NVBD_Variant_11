@@ -1,0 +1,3340 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/31/2025 9:57:06 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-PGNJ2V8"
+  DTS:CreatorName="DESKTOP-PGNJ2V8\Admin"
+  DTS:DTSID="{7A1F4E0B-10F3-4DD5-93C8-BD5FB9BBF88E}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.2"
+  DTS:LocaleID="3072"
+  DTS:ObjectName="Load_Dimensions"
+  DTS:PackageType="5"
+  DTS:VersionBuild="33"
+  DTS:VersionGUID="{19598381-174A-4D18-B682-1FAD7A3C286C}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-PGNJ2V8\LOCALHOST.Payroll_V11]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{59982224-F54F-4433-8A2F-FC7459F50619}"
+      DTS:ObjectName="DESKTOP-PGNJ2V8\LOCALHOST.Payroll_V11">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-PGNJ2V8\LOCALHOST;Initial Catalog=Payroll_V11;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Load_Dimensions-{59982224-F54F-4433-8A2F-FC7459F50619}DESKTOP-PGNJ2V8\LOCALHOST.Payroll_V11;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT_Load_DimDate"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{5A243EBF-F4EC-4A53-A2E8-C37C5CE8F73E}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_Load_DimDate"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT_Load_DimDate\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimDate]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_DimDate\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{B2A00523-7ACF-4FFB-9E22-E48BA69BD108}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CM_Payroll_DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_DimDate\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="RedirectRow"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_DimDate\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FullDate]"
+                      cachedDataType="dbDate"
+                      cachedName="FullDate"
+                      externalMetadataColumnId="Package\DFT_Load_DimDate\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FullDate]"
+                      lineageId="Package\DFT_Load_DimDate\OLE DB Source.Outputs[OLE DB Source Output].Columns[FullDate]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_DimDate\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Year]"
+                      cachedDataType="i4"
+                      cachedName="Year"
+                      externalMetadataColumnId="Package\DFT_Load_DimDate\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
+                      lineageId="Package\DFT_Load_DimDate\OLE DB Source.Outputs[OLE DB Source Output].Columns[Year]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_DimDate\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Month]"
+                      cachedDataType="i4"
+                      cachedName="Month"
+                      externalMetadataColumnId="Package\DFT_Load_DimDate\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Month]"
+                      lineageId="Package\DFT_Load_DimDate\OLE DB Source.Outputs[OLE DB Source Output].Columns[Month]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_DimDate\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MonthName]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="MonthName"
+                      externalMetadataColumnId="Package\DFT_Load_DimDate\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MonthName]"
+                      lineageId="Package\DFT_Load_DimDate\OLE DB Source.Outputs[OLE DB Source Output].Columns[MonthName]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_DimDate\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Quarter]"
+                      cachedDataType="i4"
+                      cachedName="Quarter"
+                      externalMetadataColumnId="Package\DFT_Load_DimDate\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Quarter]"
+                      lineageId="Package\DFT_Load_DimDate\OLE DB Source.Outputs[OLE DB Source Output].Columns[Quarter]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimDate\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateKey]"
+                      dataType="i4"
+                      name="DateKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimDate\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FullDate]"
+                      dataType="dbDate"
+                      name="FullDate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimDate\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
+                      dataType="i4"
+                      name="Year" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimDate\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Quarter]"
+                      dataType="i4"
+                      name="Quarter" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimDate\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Month]"
+                      dataType="i4"
+                      name="Month" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimDate\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MonthName]"
+                      dataType="wstr"
+                      length="20"
+                      name="MonthName" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_DimDate\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT_Load_DimDate\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_DimDate\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_DimDate\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimDate\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_DimDate\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_DimDate\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">WITH Dates AS (
+    SELECT CAST('2015-01-01' AS DATE) AS DateValue
+    UNION ALL
+    SELECT DATEADD(DAY, 1, DateValue)
+    FROM Dates
+    WHERE DateValue &lt; '2025-12-31'
+)
+SELECT
+    DateValue AS FullDate,
+    YEAR(DateValue) AS [Year],
+    DATEPART(QUARTER, DateValue) AS [Quarter],
+    MONTH(DateValue) AS [Month],
+    DATENAME(MONTH, DateValue) AS MonthName
+FROM Dates
+OPTION (MAXRECURSION 0);</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_DimDate\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-PGNJ2V8\LOCALHOST.Payroll_V11]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-PGNJ2V8\LOCALHOST.Payroll_V11]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_DimDate\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_DimDate\OLE DB Source.Outputs[OLE DB Source Output].Columns[FullDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_DimDate\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FullDate]"
+                      lineageId="Package\DFT_Load_DimDate\OLE DB Source.Outputs[OLE DB Source Output].Columns[FullDate]"
+                      name="FullDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimDate\OLE DB Source.Outputs[OLE DB Source Output].Columns[Year]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_DimDate\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Year]"
+                      lineageId="Package\DFT_Load_DimDate\OLE DB Source.Outputs[OLE DB Source Output].Columns[Year]"
+                      name="Year"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimDate\OLE DB Source.Outputs[OLE DB Source Output].Columns[Month]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_DimDate\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Month]"
+                      lineageId="Package\DFT_Load_DimDate\OLE DB Source.Outputs[OLE DB Source Output].Columns[Month]"
+                      name="Month"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimDate\OLE DB Source.Outputs[OLE DB Source Output].Columns[MonthName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_DimDate\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MonthName]"
+                      length="30"
+                      lineageId="Package\DFT_Load_DimDate\OLE DB Source.Outputs[OLE DB Source Output].Columns[MonthName]"
+                      name="MonthName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimDate\OLE DB Source.Outputs[OLE DB Source Output].Columns[Quarter]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_DimDate\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Quarter]"
+                      lineageId="Package\DFT_Load_DimDate\OLE DB Source.Outputs[OLE DB Source Output].Columns[Quarter]"
+                      name="Quarter"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimDate\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FullDate]"
+                      dataType="dbDate"
+                      name="FullDate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimDate\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Year]"
+                      dataType="i4"
+                      name="Year" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimDate\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Month]"
+                      dataType="i4"
+                      name="Month" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimDate\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MonthName]"
+                      dataType="wstr"
+                      length="30"
+                      name="MonthName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimDate\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Quarter]"
+                      dataType="i4"
+                      name="Quarter" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_Load_DimDate\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_DimDate\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FullDate]"
+                      dataType="dbDate"
+                      lineageId="Package\DFT_Load_DimDate\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FullDate]"
+                      name="FullDate" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimDate\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Year]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_DimDate\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Year]"
+                      name="Year" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimDate\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Quarter]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_DimDate\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Quarter]"
+                      name="Quarter" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimDate\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Month]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_DimDate\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Month]"
+                      name="Month" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimDate\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MonthName]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\DFT_Load_DimDate\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MonthName]"
+                      name="MonthName" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimDate\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_DimDate\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimDate\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_DimDate\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT_Load_DimDate.Paths[OLE DB Source Output]"
+              endId="Package\DFT_Load_DimDate\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_Load_DimDate\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DFT_Load_DimDepartment"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{5A73EAA5-90E5-4049-B795-94DFD7C36C45}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_Load_DimDepartment"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT_Load_DimDepartment\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimDepartment]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_DimDepartment\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{B2A00523-7ACF-4FFB-9E22-E48BA69BD108}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CM_Payroll_DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_DimDepartment\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_DimDepartment\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DepartmentID]"
+                      cachedDataType="i4"
+                      cachedName="DepartmentID"
+                      externalMetadataColumnId="Package\DFT_Load_DimDepartment\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DepartmentID]"
+                      lineageId="Package\DFT_Load_DimDepartment\OLE DB Source.Outputs[OLE DB Source Output].Columns[DepartmentID]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_DimDepartment\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DepartmentName]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="DepartmentName"
+                      externalMetadataColumnId="Package\DFT_Load_DimDepartment\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DepartmentName]"
+                      lineageId="Package\DFT_Load_DimDepartment\OLE DB Source.Outputs[OLE DB Source Output].Columns[DepartmentName]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimDepartment\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DepartmentID]"
+                      dataType="i4"
+                      name="DepartmentID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimDepartment\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DepartmentName]"
+                      dataType="wstr"
+                      length="100"
+                      name="DepartmentName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimDepartment\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DepartmentKey]"
+                      dataType="i4"
+                      name="DepartmentKey" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_DimDepartment\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT_Load_DimDepartment\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_DimDepartment\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_DimDepartment\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimDepartment\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_DimDepartment\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_DimDepartment\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DepartmentID, DepartmentName
+FROM dbo.Department;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_DimDepartment\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-PGNJ2V8\LOCALHOST.Payroll_V11]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-PGNJ2V8\LOCALHOST.Payroll_V11]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_DimDepartment\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_DimDepartment\OLE DB Source.Outputs[OLE DB Source Output].Columns[DepartmentID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_DimDepartment\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DepartmentID]"
+                      lineageId="Package\DFT_Load_DimDepartment\OLE DB Source.Outputs[OLE DB Source Output].Columns[DepartmentID]"
+                      name="DepartmentID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimDepartment\OLE DB Source.Outputs[OLE DB Source Output].Columns[DepartmentName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_DimDepartment\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DepartmentName]"
+                      length="100"
+                      lineageId="Package\DFT_Load_DimDepartment\OLE DB Source.Outputs[OLE DB Source Output].Columns[DepartmentName]"
+                      name="DepartmentName"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimDepartment\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DepartmentID]"
+                      dataType="i4"
+                      name="DepartmentID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimDepartment\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DepartmentName]"
+                      dataType="wstr"
+                      length="100"
+                      name="DepartmentName" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_Load_DimDepartment\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_DimDepartment\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DepartmentID]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_DimDepartment\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DepartmentID]"
+                      name="DepartmentID" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimDepartment\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DepartmentName]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\DFT_Load_DimDepartment\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DepartmentName]"
+                      name="DepartmentName" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimDepartment\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_DimDepartment\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimDepartment\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_DimDepartment\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT_Load_DimDepartment.Paths[OLE DB Source Output]"
+              endId="Package\DFT_Load_DimDepartment\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_Load_DimDepartment\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DFT_Load_DimEmployee"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{97AB5908-A058-484D-A517-B7303D76CBC3}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_Load_DimEmployee"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT_Load_DimEmployee\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimEmployee]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_DimEmployee\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{B2A00523-7ACF-4FFB-9E22-E48BA69BD108}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CM_Payroll_DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_DimEmployee\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_DimEmployee\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[EmployeeID]"
+                      cachedDataType="i4"
+                      cachedName="EmployeeID"
+                      externalMetadataColumnId="Package\DFT_Load_DimEmployee\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeID]"
+                      lineageId="Package\DFT_Load_DimEmployee\OLE DB Source.Outputs[OLE DB Source Output].Columns[EmployeeID]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_DimEmployee\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FullName]"
+                      cachedDataType="wstr"
+                      cachedLength="101"
+                      cachedName="FullName"
+                      externalMetadataColumnId="Package\DFT_Load_DimEmployee\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FullName]"
+                      lineageId="Package\DFT_Load_DimEmployee\OLE DB Source.Outputs[OLE DB Source Output].Columns[FullName]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_DimEmployee\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Gender]"
+                      cachedCodepage="1251"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="Gender"
+                      externalMetadataColumnId="Package\DFT_Load_DimEmployee\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
+                      lineageId="Package\DFT_Load_DimEmployee\OLE DB Source.Outputs[OLE DB Source Output].Columns[Gender]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_DimEmployee\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[BirthDate]"
+                      cachedDataType="dbDate"
+                      cachedName="BirthDate"
+                      externalMetadataColumnId="Package\DFT_Load_DimEmployee\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BirthDate]"
+                      lineageId="Package\DFT_Load_DimEmployee\OLE DB Source.Outputs[OLE DB Source Output].Columns[BirthDate]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_DimEmployee\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[HireDate]"
+                      cachedDataType="dbDate"
+                      cachedName="HireDate"
+                      externalMetadataColumnId="Package\DFT_Load_DimEmployee\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[HireDate]"
+                      lineageId="Package\DFT_Load_DimEmployee\OLE DB Source.Outputs[OLE DB Source Output].Columns[HireDate]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimEmployee\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeKey]"
+                      dataType="i4"
+                      name="EmployeeKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimEmployee\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeID]"
+                      dataType="i4"
+                      name="EmployeeID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimEmployee\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FullName]"
+                      dataType="wstr"
+                      length="150"
+                      name="FullName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimEmployee\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
+                      codePage="1251"
+                      dataType="str"
+                      length="1"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimEmployee\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BirthDate]"
+                      dataType="dbDate"
+                      name="BirthDate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimEmployee\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[HireDate]"
+                      dataType="dbDate"
+                      name="HireDate" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_DimEmployee\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT_Load_DimEmployee\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_DimEmployee\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_DimEmployee\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimEmployee\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_DimEmployee\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_DimEmployee\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+    EmployeeID,
+    LastName + ' ' + FirstName AS FullName,
+    Gender,
+    BirthDate,
+    HireDate
+FROM dbo.Employee;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_DimEmployee\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-PGNJ2V8\LOCALHOST.Payroll_V11]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-PGNJ2V8\LOCALHOST.Payroll_V11]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_DimEmployee\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_DimEmployee\OLE DB Source.Outputs[OLE DB Source Output].Columns[EmployeeID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_DimEmployee\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[EmployeeID]"
+                      lineageId="Package\DFT_Load_DimEmployee\OLE DB Source.Outputs[OLE DB Source Output].Columns[EmployeeID]"
+                      name="EmployeeID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimEmployee\OLE DB Source.Outputs[OLE DB Source Output].Columns[FullName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_DimEmployee\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FullName]"
+                      length="101"
+                      lineageId="Package\DFT_Load_DimEmployee\OLE DB Source.Outputs[OLE DB Source Output].Columns[FullName]"
+                      name="FullName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimEmployee\OLE DB Source.Outputs[OLE DB Source Output].Columns[Gender]"
+                      codePage="1251"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_DimEmployee\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Gender]"
+                      length="1"
+                      lineageId="Package\DFT_Load_DimEmployee\OLE DB Source.Outputs[OLE DB Source Output].Columns[Gender]"
+                      name="Gender"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimEmployee\OLE DB Source.Outputs[OLE DB Source Output].Columns[BirthDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_DimEmployee\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BirthDate]"
+                      lineageId="Package\DFT_Load_DimEmployee\OLE DB Source.Outputs[OLE DB Source Output].Columns[BirthDate]"
+                      name="BirthDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimEmployee\OLE DB Source.Outputs[OLE DB Source Output].Columns[HireDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_DimEmployee\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[HireDate]"
+                      lineageId="Package\DFT_Load_DimEmployee\OLE DB Source.Outputs[OLE DB Source Output].Columns[HireDate]"
+                      name="HireDate"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimEmployee\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[EmployeeID]"
+                      dataType="i4"
+                      name="EmployeeID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimEmployee\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FullName]"
+                      dataType="wstr"
+                      length="101"
+                      name="FullName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimEmployee\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Gender]"
+                      codePage="1251"
+                      dataType="str"
+                      length="1"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimEmployee\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BirthDate]"
+                      dataType="dbDate"
+                      name="BirthDate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimEmployee\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[HireDate]"
+                      dataType="dbDate"
+                      name="HireDate" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_Load_DimEmployee\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_DimEmployee\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[EmployeeID]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_DimEmployee\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[EmployeeID]"
+                      name="EmployeeID" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimEmployee\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FullName]"
+                      dataType="wstr"
+                      length="101"
+                      lineageId="Package\DFT_Load_DimEmployee\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FullName]"
+                      name="FullName" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimEmployee\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Gender]"
+                      codePage="1251"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\DFT_Load_DimEmployee\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Gender]"
+                      name="Gender" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimEmployee\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BirthDate]"
+                      dataType="dbDate"
+                      lineageId="Package\DFT_Load_DimEmployee\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BirthDate]"
+                      name="BirthDate" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimEmployee\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[HireDate]"
+                      dataType="dbDate"
+                      lineageId="Package\DFT_Load_DimEmployee\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[HireDate]"
+                      name="HireDate" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimEmployee\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_DimEmployee\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimEmployee\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_DimEmployee\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT_Load_DimEmployee.Paths[OLE DB Source Output]"
+              endId="Package\DFT_Load_DimEmployee\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_Load_DimEmployee\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DFT_Load_DimPosition"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{45EB05D9-C4C3-497F-A6C1-877674376FC9}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_Load_DimPosition"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT_Load_DimPosition\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimPosition]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_DimPosition\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{B2A00523-7ACF-4FFB-9E22-E48BA69BD108}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CM_Payroll_DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_DimPosition\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_DimPosition\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PositionID]"
+                      cachedDataType="i4"
+                      cachedName="PositionID"
+                      externalMetadataColumnId="Package\DFT_Load_DimPosition\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PositionID]"
+                      lineageId="Package\DFT_Load_DimPosition\OLE DB Source.Outputs[OLE DB Source Output].Columns[PositionID]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_DimPosition\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PositionName]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="PositionName"
+                      externalMetadataColumnId="Package\DFT_Load_DimPosition\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PositionName]"
+                      lineageId="Package\DFT_Load_DimPosition\OLE DB Source.Outputs[OLE DB Source Output].Columns[PositionName]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimPosition\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PositionKey]"
+                      dataType="i4"
+                      name="PositionKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimPosition\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PositionID]"
+                      dataType="i4"
+                      name="PositionID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimPosition\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PositionName]"
+                      dataType="wstr"
+                      length="100"
+                      name="PositionName" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_DimPosition\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT_Load_DimPosition\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_DimPosition\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_DimPosition\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimPosition\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_DimPosition\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_DimPosition\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT PositionID, PositionName
+FROM dbo.Position;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_DimPosition\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-PGNJ2V8\LOCALHOST.Payroll_V11]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-PGNJ2V8\LOCALHOST.Payroll_V11]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_DimPosition\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_DimPosition\OLE DB Source.Outputs[OLE DB Source Output].Columns[PositionID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_DimPosition\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PositionID]"
+                      lineageId="Package\DFT_Load_DimPosition\OLE DB Source.Outputs[OLE DB Source Output].Columns[PositionID]"
+                      name="PositionID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimPosition\OLE DB Source.Outputs[OLE DB Source Output].Columns[PositionName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_DimPosition\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PositionName]"
+                      length="100"
+                      lineageId="Package\DFT_Load_DimPosition\OLE DB Source.Outputs[OLE DB Source Output].Columns[PositionName]"
+                      name="PositionName"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimPosition\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PositionID]"
+                      dataType="i4"
+                      name="PositionID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimPosition\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PositionName]"
+                      dataType="wstr"
+                      length="100"
+                      name="PositionName" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_Load_DimPosition\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_DimPosition\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PositionID]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_DimPosition\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PositionID]"
+                      name="PositionID" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimPosition\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PositionName]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\DFT_Load_DimPosition\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PositionName]"
+                      name="PositionName" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimPosition\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_DimPosition\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimPosition\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_DimPosition\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT_Load_DimPosition.Paths[OLE DB Source Output]"
+              endId="Package\DFT_Load_DimPosition\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_Load_DimPosition\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DFT_Load_FactPayroll"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{34FF8093-9F3E-44B7-BA80-583E23DA4F6D}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_Load_FactPayroll"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT_Load_FactPayroll\DimDate Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="DimDate Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DimDate]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DimDate]) [refTable]
+where [refTable].[FullDate] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="DateKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FullDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Year" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Quarter" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Month" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="MonthName" dataType="DT_WSTR" length="20" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].Columns[PayDate]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_FactPayroll\DimDate Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="{B2A00523-7ACF-4FFB-9E22-E48BA69BD108}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CM_Payroll_DW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_FactPayroll\DimDate Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_FactPayroll\DimDate Lookup.Inputs[Lookup Input].Columns[PayDate]"
+                      cachedDataType="dbDate"
+                      cachedName="PayDate"
+                      lineageId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].Columns[PayDate]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">FullDate</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_FactPayroll\DimDate Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DFT_Load_FactPayroll\DimDate Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_FactPayroll\DimDate Lookup.Outputs[Lookup Match Output].Columns[DateKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DFT_Load_FactPayroll\DimDate Lookup.Outputs[Lookup Match Output].Columns[DateKey]"
+                      name="DateKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">DateKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_FactPayroll\DimDate Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DFT_Load_FactPayroll\DimDate Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_FactPayroll\DimDate Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DFT_Load_FactPayroll\DimDate Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_FactPayroll\DimDate Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactPayroll\DimDate Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactPayroll\DimDate Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactPayroll\DimDate Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_FactPayroll\DimDepartment Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="DimDepartment Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DimDepartment]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DimDepartment]) [refTable]
+where [refTable].[DepartmentID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="DepartmentKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DepartmentID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DepartmentName" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].Columns[DepartmentID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_FactPayroll\DimDepartment Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="{B2A00523-7ACF-4FFB-9E22-E48BA69BD108}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CM_Payroll_DW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_FactPayroll\DimDepartment Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_FactPayroll\DimDepartment Lookup.Inputs[Lookup Input].Columns[DepartmentID]"
+                      cachedDataType="i4"
+                      cachedName="DepartmentID"
+                      lineageId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].Columns[DepartmentID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">DepartmentID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_FactPayroll\DimDepartment Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DFT_Load_FactPayroll\DimDepartment Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_FactPayroll\DimDepartment Lookup.Outputs[Lookup Match Output].Columns[DepartmentKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DFT_Load_FactPayroll\DimDepartment Lookup.Outputs[Lookup Match Output].Columns[DepartmentKey]"
+                      name="DepartmentKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">DepartmentKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_FactPayroll\DimDepartment Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DFT_Load_FactPayroll\DimDepartment Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_FactPayroll\DimDepartment Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DFT_Load_FactPayroll\DimDepartment Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_FactPayroll\DimDepartment Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactPayroll\DimDepartment Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactPayroll\DimDepartment Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactPayroll\DimDepartment Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_FactPayroll\DimEmployee Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="DimEmployee Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DimEmployee]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DimEmployee]) [refTable]
+where [refTable].[EmployeeID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="EmployeeKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="EmployeeID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FullName" dataType="DT_WSTR" length="150" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Gender" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1251"/&gt;&lt;referenceColumn name="BirthDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="HireDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].Columns[EmployeeID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_FactPayroll\DimEmployee Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="{B2A00523-7ACF-4FFB-9E22-E48BA69BD108}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CM_Payroll_DW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_FactPayroll\DimEmployee Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_FactPayroll\DimEmployee Lookup.Inputs[Lookup Input].Columns[EmployeeID]"
+                      cachedDataType="i4"
+                      cachedName="EmployeeID"
+                      lineageId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].Columns[EmployeeID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">EmployeeID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_FactPayroll\DimEmployee Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DFT_Load_FactPayroll\DimEmployee Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_FactPayroll\DimEmployee Lookup.Outputs[Lookup Match Output].Columns[EmployeeKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DFT_Load_FactPayroll\DimEmployee Lookup.Outputs[Lookup Match Output].Columns[EmployeeKey]"
+                      name="EmployeeKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">EmployeeKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_FactPayroll\DimEmployee Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DFT_Load_FactPayroll\DimEmployee Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_FactPayroll\DimEmployee Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DFT_Load_FactPayroll\DimEmployee Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_FactPayroll\DimEmployee Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactPayroll\DimEmployee Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactPayroll\DimEmployee Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactPayroll\DimEmployee Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_FactPayroll\DimPosition Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="DimPosition Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DimPosition]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DimPosition]) [refTable]
+where [refTable].[PositionID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="PositionKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="PositionID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="PositionName" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].Columns[PositionID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_FactPayroll\DimPosition Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="{B2A00523-7ACF-4FFB-9E22-E48BA69BD108}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CM_Payroll_DW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_FactPayroll\DimPosition Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_FactPayroll\DimPosition Lookup.Inputs[Lookup Input].Columns[PositionID]"
+                      cachedDataType="i4"
+                      cachedName="PositionID"
+                      lineageId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].Columns[PositionID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">PositionID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_FactPayroll\DimPosition Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DFT_Load_FactPayroll\DimPosition Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_FactPayroll\DimPosition Lookup.Outputs[Lookup Match Output].Columns[PositionKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DFT_Load_FactPayroll\DimPosition Lookup.Outputs[Lookup Match Output].Columns[PositionKey]"
+                      name="PositionKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">PositionKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_FactPayroll\DimPosition Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DFT_Load_FactPayroll\DimPosition Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_FactPayroll\DimPosition Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DFT_Load_FactPayroll\DimPosition Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_FactPayroll\DimPosition Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactPayroll\DimPosition Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactPayroll\DimPosition Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactPayroll\DimPosition Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_FactPayroll\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[FactPayroll]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_FactPayroll\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{B2A00523-7ACF-4FFB-9E22-E48BA69BD108}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CM_Payroll_DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_FactPayroll\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[BaseSalary]"
+                      cachedDataType="numeric"
+                      cachedName="BaseSalary"
+                      cachedPrecision="12"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\DFT_Load_FactPayroll\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BaseSalary]"
+                      lineageId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].Columns[BaseSalary]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Bonus]"
+                      cachedDataType="numeric"
+                      cachedName="Bonus"
+                      cachedPrecision="12"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\DFT_Load_FactPayroll\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Bonus]"
+                      lineageId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bonus]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Allowance]"
+                      cachedDataType="numeric"
+                      cachedName="Allowance"
+                      cachedPrecision="12"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\DFT_Load_FactPayroll\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Allowance]"
+                      lineageId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].Columns[Allowance]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Tax]"
+                      cachedDataType="numeric"
+                      cachedName="Tax"
+                      cachedPrecision="12"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\DFT_Load_FactPayroll\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Tax]"
+                      lineageId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].Columns[Tax]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TotalPay]"
+                      cachedDataType="numeric"
+                      cachedName="TotalPay"
+                      cachedPrecision="15"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\DFT_Load_FactPayroll\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalPay]"
+                      lineageId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalPay]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[EmployeeKey]"
+                      cachedDataType="i4"
+                      cachedName="EmployeeKey"
+                      externalMetadataColumnId="Package\DFT_Load_FactPayroll\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeKey]"
+                      lineageId="Package\DFT_Load_FactPayroll\DimEmployee Lookup.Outputs[Lookup Match Output].Columns[EmployeeKey]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DepartmentKey]"
+                      cachedDataType="i4"
+                      cachedName="DepartmentKey"
+                      externalMetadataColumnId="Package\DFT_Load_FactPayroll\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DepartmentKey]"
+                      lineageId="Package\DFT_Load_FactPayroll\DimDepartment Lookup.Outputs[Lookup Match Output].Columns[DepartmentKey]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PositionKey]"
+                      cachedDataType="i4"
+                      cachedName="PositionKey"
+                      externalMetadataColumnId="Package\DFT_Load_FactPayroll\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PositionKey]"
+                      lineageId="Package\DFT_Load_FactPayroll\DimPosition Lookup.Outputs[Lookup Match Output].Columns[PositionKey]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DateKey]"
+                      cachedDataType="i4"
+                      cachedName="DateKey"
+                      externalMetadataColumnId="Package\DFT_Load_FactPayroll\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateKey]"
+                      lineageId="Package\DFT_Load_FactPayroll\DimDate Lookup.Outputs[Lookup Match Output].Columns[DateKey]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateKey]"
+                      dataType="i4"
+                      name="DateKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeKey]"
+                      dataType="i4"
+                      name="EmployeeKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DepartmentKey]"
+                      dataType="i4"
+                      name="DepartmentKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PositionKey]"
+                      dataType="i4"
+                      name="PositionKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BaseSalary]"
+                      dataType="numeric"
+                      name="BaseSalary"
+                      precision="12"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Bonus]"
+                      dataType="numeric"
+                      name="Bonus"
+                      precision="12"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Allowance]"
+                      dataType="numeric"
+                      name="Allowance"
+                      precision="12"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Tax]"
+                      dataType="numeric"
+                      name="Tax"
+                      precision="12"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalPay]"
+                      dataType="numeric"
+                      name="TotalPay"
+                      precision="12"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_FactPayroll\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT_Load_FactPayroll\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactPayroll\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactPayroll\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_FactPayroll\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+    p.EmployeeID,
+    e.DepartmentID,
+    e.PositionID,
+    p.PayDate,
+    p.BaseSalary,
+    p.Bonus,
+    p.Allowance,
+    p.Tax,
+    p.TotalPay
+FROM dbo.Payroll p
+JOIN dbo.Employee e
+    ON e.EmployeeID = p.EmployeeID;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_FactPayroll\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-PGNJ2V8\LOCALHOST.Payroll_V11]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-PGNJ2V8\LOCALHOST.Payroll_V11]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].Columns[EmployeeID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[EmployeeID]"
+                      lineageId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].Columns[EmployeeID]"
+                      name="EmployeeID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].Columns[PayDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PayDate]"
+                      lineageId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].Columns[PayDate]"
+                      name="PayDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].Columns[BaseSalary]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BaseSalary]"
+                      lineageId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].Columns[BaseSalary]"
+                      name="BaseSalary"
+                      precision="12"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bonus]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Bonus]"
+                      lineageId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bonus]"
+                      name="Bonus"
+                      precision="12"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].Columns[Allowance]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Allowance]"
+                      lineageId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].Columns[Allowance]"
+                      name="Allowance"
+                      precision="12"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].Columns[Tax]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Tax]"
+                      lineageId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].Columns[Tax]"
+                      name="Tax"
+                      precision="12"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalPay]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TotalPay]"
+                      lineageId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalPay]"
+                      name="TotalPay"
+                      precision="15"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].Columns[DepartmentID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DepartmentID]"
+                      lineageId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].Columns[DepartmentID]"
+                      name="DepartmentID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].Columns[PositionID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PositionID]"
+                      lineageId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].Columns[PositionID]"
+                      name="PositionID"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[EmployeeID]"
+                      dataType="i4"
+                      name="EmployeeID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PayDate]"
+                      dataType="dbDate"
+                      name="PayDate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BaseSalary]"
+                      dataType="numeric"
+                      name="BaseSalary"
+                      precision="12"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Bonus]"
+                      dataType="numeric"
+                      name="Bonus"
+                      precision="12"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Allowance]"
+                      dataType="numeric"
+                      name="Allowance"
+                      precision="12"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Tax]"
+                      dataType="numeric"
+                      name="Tax"
+                      precision="12"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TotalPay]"
+                      dataType="numeric"
+                      name="TotalPay"
+                      precision="15"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DepartmentID]"
+                      dataType="i4"
+                      name="DepartmentID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PositionID]"
+                      dataType="i4"
+                      name="PositionID" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[EmployeeID]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[EmployeeID]"
+                      name="EmployeeID" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DepartmentID]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DepartmentID]"
+                      name="DepartmentID" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PositionID]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PositionID]"
+                      name="PositionID" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PayDate]"
+                      dataType="dbDate"
+                      lineageId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PayDate]"
+                      name="PayDate" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BaseSalary]"
+                      dataType="numeric"
+                      lineageId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BaseSalary]"
+                      name="BaseSalary"
+                      precision="12"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Bonus]"
+                      dataType="numeric"
+                      lineageId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Bonus]"
+                      name="Bonus"
+                      precision="12"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Allowance]"
+                      dataType="numeric"
+                      lineageId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Allowance]"
+                      name="Allowance"
+                      precision="12"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Tax]"
+                      dataType="numeric"
+                      lineageId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Tax]"
+                      name="Tax"
+                      precision="12"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TotalPay]"
+                      dataType="numeric"
+                      lineageId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TotalPay]"
+                      name="TotalPay"
+                      precision="15"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT_Load_FactPayroll.Paths[Lookup Match Output]"
+              endId="Package\DFT_Load_FactPayroll\DimDepartment Lookup.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\DFT_Load_FactPayroll\DimEmployee Lookup.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DFT_Load_FactPayroll.Paths[Lookup Match Output1]"
+              endId="Package\DFT_Load_FactPayroll\DimPosition Lookup.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\DFT_Load_FactPayroll\DimDepartment Lookup.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DFT_Load_FactPayroll.Paths[Lookup Match Output2]"
+              endId="Package\DFT_Load_FactPayroll\DimDate Lookup.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\DFT_Load_FactPayroll\DimPosition Lookup.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DFT_Load_FactPayroll.Paths[Lookup Match Output3]"
+              endId="Package\DFT_Load_FactPayroll\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Lookup Match Output"
+              startId="Package\DFT_Load_FactPayroll\DimDate Lookup.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DFT_Load_FactPayroll.Paths[OLE DB Source Output]"
+              endId="Package\DFT_Load_FactPayroll\DimEmployee Lookup.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_Load_FactPayroll\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{451F74E4-2DF8-43A0-AF9C-569E5CDC071D}"
+      DTS:From="Package\DFT_Load_DimDate"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DFT_Load_FactPayroll" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{525A0B13-F598-4C38-9CBC-E043580B5089}"
+      DTS:From="Package\DFT_Load_DimDepartment"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\DFT_Load_FactPayroll" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{9C836D18-2982-4687-BF9B-4EAC3E458923}"
+      DTS:From="Package\DFT_Load_DimPosition"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\DFT_Load_FactPayroll" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{A1872505-4DA7-4411-BBF6-86A999117F07}"
+      DTS:From="Package\DFT_Load_DimEmployee"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\DFT_Load_FactPayroll" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="173,42"
+          Id="Package\DFT_Load_DimDate"
+          TopLeft="474,100" />
+        <NodeLayout
+          Size="207,42"
+          Id="Package\DFT_Load_DimDepartment"
+          TopLeft="187,88" />
+        <NodeLayout
+          Size="197,42"
+          Id="Package\DFT_Load_DimEmployee"
+          TopLeft="561,286" />
+        <NodeLayout
+          Size="188,42"
+          Id="Package\DFT_Load_DimPosition"
+          TopLeft="68,209" />
+        <NodeLayout
+          Size="183,42"
+          Id="Package\DFT_Load_FactPayroll"
+          TopLeft="283,377" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="560.5,142">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-168.5,235"
+              Start="0,0"
+              End="-168.5,227.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,125.924471299094" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,125.924471299094"
+                    Point2="0,129.924471299094"
+                    Point3="-4,129.924471299094" />
+                  <mssgle:LineSegment
+                    End="-164.5,129.924471299094" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-164.5,129.924471299094"
+                    Point2="-168.5,129.924471299094"
+                    Point3="-168.5,133.924471299094" />
+                  <mssgle:LineSegment
+                    End="-168.5,227.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="290.5,130">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="66.5,247"
+              Start="0,0"
+              End="66.5,239.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,132.558912386707" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,132.558912386707"
+                    Point2="0,136.558912386707"
+                    Point3="4,136.558912386707" />
+                  <mssgle:LineSegment
+                    End="62.5,136.558912386707" />
+                  <mssgle:CubicBezierSegment
+                    Point1="62.5,136.558912386707"
+                    Point2="66.5,136.558912386707"
+                    Point3="66.5,140.558912386707" />
+                  <mssgle:LineSegment
+                    End="66.5,239.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="162,251">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="160,126"
+              Start="0,0"
+              End="160,118.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,84.3448275862069" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,84.3448275862069"
+                    Point2="0,88.3448275862069"
+                    Point3="4,88.3448275862069" />
+                  <mssgle:LineSegment
+                    End="156,88.3448275862069" />
+                  <mssgle:CubicBezierSegment
+                    Point1="156,88.3448275862069"
+                    Point2="160,88.3448275862069"
+                    Point3="160,92.3448275862069" />
+                  <mssgle:LineSegment
+                    End="160,118.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="659.5,328">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-232.5,49"
+              Start="0,0"
+              End="-232.5,41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.3563218390805" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.3563218390805"
+                    Point2="0,34.3563218390805"
+                    Point3="-4,34.3563218390805" />
+                  <mssgle:LineSegment
+                    End="-228.5,34.3563218390805" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-228.5,34.3563218390805"
+                    Point2="-232.5,34.3563218390805"
+                    Point3="-232.5,38.3563218390805" />
+                  <mssgle:LineSegment
+                    End="-232.5,41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT_Load_DimDate">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\DFT_Load_DimDate\OLE DB Source"
+          TopLeft="255,124" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\DFT_Load_DimDate\OLE DB Destination"
+          TopLeft="273,220" />
+        <EdgeLayout
+          Id="Package\DFT_Load_DimDate.Paths[OLE DB Source Output]"
+          TopLeft="330,166">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="28.5,54"
+              Start="0,0"
+              End="28.5,46.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23"
+                    Point2="0,27"
+                    Point3="4,27" />
+                  <mssgle:LineSegment
+                    End="24.5,27" />
+                  <mssgle:CubicBezierSegment
+                    Point1="24.5,27"
+                    Point2="28.5,27"
+                    Point3="28.5,31" />
+                  <mssgle:LineSegment
+                    End="28.5,46.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_DimDate\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_DimDate\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\DFT_Load_DimDepartment">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\DFT_Load_DimDepartment\OLE DB Source"
+          TopLeft="89,53" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\DFT_Load_DimDepartment\OLE DB Destination"
+          TopLeft="99,172" />
+        <EdgeLayout
+          Id="Package\DFT_Load_DimDepartment.Paths[OLE DB Source Output]"
+          TopLeft="164,95">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="20.5,77"
+              Start="0,0"
+              End="20.5,69.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,34.5"
+                    Point2="0,38.5"
+                    Point3="4,38.5" />
+                  <mssgle:LineSegment
+                    End="16.5,38.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="16.5,38.5"
+                    Point2="20.5,38.5"
+                    Point3="20.5,42.5" />
+                  <mssgle:LineSegment
+                    End="20.5,69.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_DimDepartment\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_DimDepartment\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\DFT_Load_DimEmployee">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\DFT_Load_DimEmployee\OLE DB Source"
+          TopLeft="250,132" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\DFT_Load_DimEmployee\OLE DB Destination"
+          TopLeft="275,261" />
+        <EdgeLayout
+          Id="Package\DFT_Load_DimEmployee.Paths[OLE DB Source Output]"
+          TopLeft="325,174">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="35.5,87"
+              Start="0,0"
+              End="35.5,79.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,39.5"
+                    Point2="0,43.5"
+                    Point3="4,43.5" />
+                  <mssgle:LineSegment
+                    End="31.5,43.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="31.5,43.5"
+                    Point2="35.5,43.5"
+                    Point3="35.5,47.5" />
+                  <mssgle:LineSegment
+                    End="35.5,79.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_DimEmployee\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_DimEmployee\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\DFT_Load_DimPosition">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\DFT_Load_DimPosition\OLE DB Source"
+          TopLeft="155,98" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\DFT_Load_DimPosition\OLE DB Destination"
+          TopLeft="188,207" />
+        <EdgeLayout
+          Id="Package\DFT_Load_DimPosition.Paths[OLE DB Source Output]"
+          TopLeft="230,140">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="43.5,67"
+              Start="0,0"
+              End="43.5,59.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.5"
+                    Point2="0,33.5"
+                    Point3="4,33.5" />
+                  <mssgle:LineSegment
+                    End="39.5,33.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="39.5,33.5"
+                    Point2="43.5,33.5"
+                    Point3="43.5,37.5" />
+                  <mssgle:LineSegment
+                    End="43.5,59.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_DimPosition\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_DimPosition\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\DFT_Load_FactPayroll">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\DFT_Load_FactPayroll\OLE DB Source"
+          TopLeft="189,106" />
+        <NodeLayout
+          Size="181,42"
+          Id="Package\DFT_Load_FactPayroll\DimEmployee Lookup"
+          TopLeft="201,194" />
+        <EdgeLayout
+          Id="Package\DFT_Load_FactPayroll.Paths[OLE DB Source Output]"
+          TopLeft="264,148">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="27.5,46"
+              Start="0,0"
+              End="27.5,38.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19"
+                    Point2="0,23"
+                    Point3="4,23" />
+                  <mssgle:LineSegment
+                    End="23.5,23" />
+                  <mssgle:CubicBezierSegment
+                    Point1="23.5,23"
+                    Point2="27.5,23"
+                    Point3="27.5,27" />
+                  <mssgle:LineSegment
+                    End="27.5,38.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="191,42"
+          Id="Package\DFT_Load_FactPayroll\DimDepartment Lookup"
+          TopLeft="225,291" />
+        <EdgeLayout
+          Id="Package\DFT_Load_FactPayroll.Paths[Lookup Match Output]"
+          TopLeft="291.5,236">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="29,55"
+              Start="0,0"
+              End="29,47.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.5"
+                    Point2="0,27.5"
+                    Point3="4,27.5" />
+                  <mssgle:LineSegment
+                    End="25,27.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="25,27.5"
+                    Point2="29,27.5"
+                    Point3="29,31.5" />
+                  <mssgle:LineSegment
+                    End="29,47.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-33.69138671875,32.5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="172,42"
+          Id="Package\DFT_Load_FactPayroll\DimPosition Lookup"
+          TopLeft="500,294" />
+        <EdgeLayout
+          Id="Package\DFT_Load_FactPayroll.Paths[Lookup Match Output1]"
+          TopLeft="416,313.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="84,0"
+              Start="0,0"
+              End="76.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="76.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-9.94138671875,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="157,42"
+          Id="Package\DFT_Load_FactPayroll\DimDate Lookup"
+          TopLeft="558,216" />
+        <EdgeLayout
+          Id="Package\DFT_Load_FactPayroll.Paths[Lookup Match Output2]"
+          TopLeft="586,294">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="50.5,-36"
+              Start="0,0"
+              End="50.5,-28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-14" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-14"
+                    Point2="0,-18"
+                    Point3="4,-18" />
+                  <mssgle:LineSegment
+                    End="46.5,-18" />
+                  <mssgle:CubicBezierSegment
+                    Point1="46.5,-18"
+                    Point2="50.5,-18"
+                    Point3="50.5,-22" />
+                  <mssgle:LineSegment
+                    End="50.5,-28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-22.94138671875,-13,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="171,42"
+          Id="Package\DFT_Load_FactPayroll\OLE DB Destination"
+          TopLeft="556.5,114.5" />
+        <EdgeLayout
+          Id="Package\DFT_Load_FactPayroll.Paths[Lookup Match Output3]"
+          TopLeft="639.25,216">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,-59.5"
+              Start="0,0"
+              End="0,-52">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-52" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,-31.8046875,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_FactPayroll\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_FactPayroll\DimDepartment Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimDepartment]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_FactPayroll\DimPosition Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimPosition]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_FactPayroll\DimDate Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimDate]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_FactPayroll\DimEmployee Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimEmployee]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_FactPayroll\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,82 @@
+﻿<DeploymentSnapshot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0">
+  <Target>
+    <Database>Payroll_OLAP</Database>
+    <Server>DESKTOP-PGNJ2V8\LOCALHOST</Server>
+    <ConnectionString>Data Source=DESKTOP-PGNJ2V8\LOCALHOST;Timeout=0</ConnectionString>
+  </Target>
+  <Options>
+    <TransactionalDeployment>false</TransactionalDeployment>
+    <PartitionDeployment>DeployPartitions</PartitionDeployment>
+    <RoleDeployment>DeployRolesRetainMembers</RoleDeployment>
+    <ProcessingOption>Default</ProcessingOption>
+    <OutputScript></OutputScript>
+    <ImpactAnalysisFile></ImpactAnalysisFile>
+    <ConfigurationSettingsDeployment>Deploy</ConfigurationSettingsDeployment>
+    <OptimizationSettingsDeployment>Deploy</OptimizationSettingsDeployment>
+    <WriteBackTableCreation>UseExisting</WriteBackTableCreation>
+  </Options>
+  <Snapshot>
+    <ObjectSnapshots>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.RelationalDataSource</Type>
+        <TimeStamp>JOHcTFFZ+RYxLkXLY68DMowXnBA=03/01/2026 19:52:1203/01/2026 19:52:12</TimeStamp>
+        <ID>
+          <String>Payroll DW</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.DataSourceView</Type>
+        <TimeStamp>z5K9Hd3UHZrQwmPnLTvissqd0Dk=03/01/2026 20:19:0203/01/2026 20:19:02</TimeStamp>
+        <ID>
+          <String>Payroll DW</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>E4Tk7oK+8Np1M7ihFWU2e2BIZLg=04/01/2026 17:57:5403/01/2026 20:51:42</TimeStamp>
+        <ID>
+          <String>Dim Date</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>GLrFGIWsivuR1/GFyUjQj66Sc78=03/01/2026 20:52:3303/01/2026 20:52:33</TimeStamp>
+        <ID>
+          <String>Dim Employee</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>BpQc8RTjy+O7KoDXH4tHalT8t+U=03/01/2026 20:53:2403/01/2026 20:53:24</TimeStamp>
+        <ID>
+          <String>Dim Department</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>K3ZIY6l0wt1mday1QijAvKoq6J8=03/01/2026 20:53:4303/01/2026 20:53:43</TimeStamp>
+        <ID>
+          <String>Dim Position</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Cube</Type>
+        <TimeStamp>b16bIMGJoaQfKrSFKPIvJ3sGqAw=03/01/2026 21:05:1103/01/2026 21:05:11/yH0mU2HJPCK1P7gfCPyws17bJ0=03/01/2026 21:05:1103/01/2026 21:05:11</TimeStamp>
+        <ID>
+          <String>Payroll DW</String>
+        </ID>
+      </ObjectSnapshot>
+    </ObjectSnapshots>
+    <DatabaseSnapshot>
+      <Type>Microsoft.AnalysisServices.Database</Type>
+      <TimeStamp>GZdMrGjNWkEAXYmhN1oPEW18Hxs=03/01/2026 19:08:2103/01/2026 19:08:21</TimeStamp>
+      <ID>
+        <String>Payroll_OLAP</String>
+      </ID>
+    </DatabaseSnapshot>
+    <Granularity>Coarse</Granularity>
+  </Snapshot>
+  <AssemblyLocations />
+  <ProcessingComplete>true</ProcessingComplete>
+  <LastDeployed>2026-01-04T15:58:13.506667Z</LastDeployed>
+</DeploymentSnapshot>

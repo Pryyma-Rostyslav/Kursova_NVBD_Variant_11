@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="CM_Payroll_DW"
+  DTS:DTSID="{B2A00523-7ACF-4FFB-9E22-E48BA69BD108}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=DESKTOP-PGNJ2V8\LOCALHOST;Initial Catalog=PayrollDW;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Payroll_ETL-{B2A00523-7ACF-4FFB-9E22-E48BA69BD108}DESKTOP-PGNJ2V8\LOCALHOST.PayrollDW;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
